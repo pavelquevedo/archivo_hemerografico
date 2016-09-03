@@ -48,10 +48,9 @@
 		}
 
 		public function view(){
-			$sql = "SELECT * FROM archivos WHERE correl = '{$this->correl}'";
+			$sql = "SELECT * FROM archivos WHERE anio = '{$this->anio}'";
 			$datos = $this->conn->consultaRetorno($sql);
-			$row = mysqli_fetch_assoc($datos);
-			return $row;
+			return $datos;
 		}
 
 	}

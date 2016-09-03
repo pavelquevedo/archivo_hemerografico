@@ -1,5 +1,10 @@
-<div class="col-md-6">
-        <div class="form-group" ng-repeat="anio in anios">
-            <h3>{{anio.anio}}</h3>
-        </div>
+<div class="row">
+	<div class="col-md-12" >
+	        <div class="row"  >
+	            <div class="col-md-3" style="text-align: center;padding:5px;" ng-repeat="anio in anios">
+	            	<a class="btn btn-primary" href="#/articulos/{{anio.anio}}">{{anio.anio}}</a>
+	            </div>
+	        </div>
+	</div>
 </div>
+

@@ -20,6 +20,7 @@
 										$this->datos['user'],
 										$this->datos['pass'],
 										$this->datos['db']);
+			$this->conn->set_charset("utf8");
 		}
 
 		public function consultaSimple($sql){
