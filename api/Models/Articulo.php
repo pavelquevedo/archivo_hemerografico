@@ -29,6 +29,13 @@
 			return $datos;
 		}
 
+		public function search(){
+			$sql =  "SELECT * FROM archivos 
+						WHERE nombreautor LIKE '%". $this->nombreautor ."%' AND nombrearticulo LIKE '%". $this->nombrearticulo ."%' AND anio =".$this->anio."";
+			$datos = $this->conn->consultaRetorno($sql);
+			return $datos;
+		}
+
 		public function add(){
 			$sql = "INSERT INTO archivos(nombrearticulo,nombreautor,mes,anio,path)
 					VALUES ('{$this->nombrearticulo}','{$this->nombreautor}','{$this->mes}','{$this->anio}','{$this->path}')";

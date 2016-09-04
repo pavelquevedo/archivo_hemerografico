@@ -10,5 +10,9 @@
     controller: 'articulosController',
     templateUrl: 'templates/detalleArticulos.html'
   })
+  .when('/busqueda', {
+  	controller: 'busquedaController',
+  	templateUrl: 'templates/busqueda.html'
+  })
 });
 

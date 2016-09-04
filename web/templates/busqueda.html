@@ -1,0 +1,57 @@
+<div class="row">
+	<div class="col-md-6">
+		<form action="">
+			<div class="form-group">
+				<label for="name">Autor</label>
+				<input class="form-control" type="text" name="autor" ng-model="autor">
+			</div>
+			<div class="form-group">
+				<label for="articulo">Articulo</label>
+				<input class="form-control" type="text" name="articulo" ng-model="articulo">
+			</div>
+			<div class="form-group">
+				<label for="anio">Año</label>
+				<input class="form-control" type="numeric" name="anio" ng-model="anio">
+			</div>
+			<div class="form-group" style="text-align:right;">
+				<a class="btn btn-warning" ng-click="buscarArticulos()" >Buscar</a>
+			</div>			
+		</form>
+		
+	</div>
+</div>
+<div class="row" ng-show="articulos.length > 0">
+	<div class="col-md-12">
+		<div class="panel panel-primary">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">{{anio}}</h3>
+		  </div>
+		  <div class="panel-body">
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<th>Autor</th>
+						<th>Articulo</th>
+						<th></th>	
+					</tr>
+				</thead>
+				<tbody ng-repeat="articulo in articulos">
+					<tr>
+						<td>
+							{{articulo.nombreautor}}
+						</td>
+						<td>
+							{{articulo.nombrearticulo}}
+						</td>
+						<td>
+							<a href="revistas/{{articulo.path}}.pdf" target='_blank'>
+						 		Descargar
+						 	</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		  </div>
+		</div>
+	</div>
+</div>

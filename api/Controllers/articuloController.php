@@ -31,6 +31,17 @@
 			echo json_encode($emparray, JSON_PRETTY_PRINT);
 		}
 
+		public function search($autor,$articulo, $anio){
+			$this->articulo->set('nombreautor',$autor);
+			$this->articulo->set('nombrearticulo',$articulo);
+			$this->articulo->set('anio',$anio);
+			$datos = $this->articulo->search();
+			while ($row = mysqli_fetch_assoc($datos)) {
+				$emparray[] = $row;
+			}
+			echo json_encode($emparray, JSON_PRETTY_PRINT);
+		}
+
 	} 
 
  ?>

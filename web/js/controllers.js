@@ -28,3 +28,20 @@ angular.module('appMain')
 		alert(err);
 	})
 }])
+
+.controller('busquedaController', ['$scope','$http', function($scope,$http){
+	$scope.articulos = [];
+	$scope.buscarArticulos = function(){
+		$http.get('http://localhost/arch_hemerografico/api/articulo/search/'+$scope.autor+'/'+$scope.articulo+'/'+$scope.anio)
+			.success(function(response){
+				if(response.length > 0){
+					$scope.articulos = response;
+					alert(response.length);
+				}
+			})
+			.error(function(err){
+				alert(err);
+			})	
+	}
+	
+}])
