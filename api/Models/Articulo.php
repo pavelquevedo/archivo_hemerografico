@@ -30,8 +30,31 @@
 		}
 
 		public function search(){
-			$sql =  "SELECT * FROM archivos 
-						WHERE nombreautor LIKE '%". $this->nombreautor ."%' AND nombrearticulo LIKE '%". $this->nombrearticulo ."%' AND anio =".$this->anio."";
+			$sql =  "SELECT * FROM archivos WHERE";
+			$pos = strpos($sql, 'WHERE');
+
+			if (isset($this->nombreautor)) {
+				if(strlen(substr($sql,$pos))==5){
+					$sql = $sql . " nombreautor LIKE '%". $this->nombreautor ."%' ";	
+				}else{
+					$sql = $sql . " AND nombreautor LIKE '%". $this->nombreautor ."%' ";
+				}
+			}
+			if (isset($this->nombrearticulo)) {
+				if(strlen(substr($sql,$pos))==5){
+					$sql = $sql . " nombrearticulo LIKE '%". $this->nombrearticulo ."%' ";	
+				}else{
+					$sql = $sql . " AND nombrearticulo LIKE '%". $this->nombrearticulo ."%' ";
+				}
+			}
+			if (isset($this->anio)) {
+				if(strlen(substr($sql,$pos))==5){
+					$sql = $sql . " anio = " . $this->anio;	
+				}else{
+					$sql = $sql . " AND anio = " . $this->anio;	
+				}
+			}
+			file_put_contents('./log_'.date("j.n.Y").'.txt', $sql, FILE_APPEND);
 			$datos = $this->conn->consultaRetorno($sql);
 			return $datos;
 		}

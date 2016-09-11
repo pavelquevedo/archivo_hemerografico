@@ -1,0 +1,1 @@
+SELECT * FROM archivos WHERE anio = 2013SELECT * FROM archivos WHERE anio = 1966SELECT * FROM archivos WHERE nombrearticulo LIKE '%tradi%' SELECT * FROM archivos WHERE anio = 1968

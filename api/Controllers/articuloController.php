@@ -32,9 +32,16 @@
 		}
 
 		public function search($autor,$articulo, $anio){
-			$this->articulo->set('nombreautor',$autor);
-			$this->articulo->set('nombrearticulo',$articulo);
-			$this->articulo->set('anio',$anio);
+			if($autor !== 'null'){
+				$this->articulo->set('nombreautor',$autor);		
+			}
+			if($articulo !== 'null'){
+				$this->articulo->set('nombrearticulo',$articulo);
+			}
+			if($anio !== 'null'){
+				$this->articulo->set('anio',$anio);
+			}
+			
 			$datos = $this->articulo->search();
 			while ($row = mysqli_fetch_assoc($datos)) {
 				$emparray[] = $row;

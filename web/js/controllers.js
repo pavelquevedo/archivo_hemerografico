@@ -32,7 +32,10 @@ angular.module('appMain')
 .controller('busquedaController', ['$scope','$http', function($scope,$http){
 	$scope.articulos = [];
 	$scope.buscarArticulos = function(){
-		$http.get('http://localhost/arch_hemerografico/api/articulo/search/'+$scope.autor+'/'+$scope.articulo+'/'+$scope.anio)
+		if (!$scope.autor && !$scope.articulo && !$scope.anio) {
+			swal("Lo sentimos...", "¡Debes ingresar al menos un criterio de búsqueda!", "error");
+		}else{
+			$http.get('http://localhost/arch_hemerografico/api/articulo/search/'+$scope.autor+'/'+$scope.articulo+'/'+$scope.anio)
 			.success(function(response){
 				if(response.length > 0){
 					$scope.articulos = response;
@@ -41,7 +44,26 @@ angular.module('appMain')
 			})
 			.error(function(err){
 				alert(err);
-			})	
+			});	
+		}
+		
+	}
+
+	//Verificadores
+	$scope.blnAutor = true;
+	$scope.blnArticulo = true;
+	$scope.blnAnio = true;
+
+	$scope.verificar = function(){
+		if(!$scope.blnAutor){
+			$scope.autor = null;	
+		}
+		if(!$scope.blnArticulo){
+			$scope.articulo = null;
+		}
+		if(!$scope.blnAnio){
+			$scope.anio = null;
+		}
 	}
 	
 }])

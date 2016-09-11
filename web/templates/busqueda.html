@@ -1,20 +1,26 @@
 <div class="row">
 	<div class="col-md-6">
-		<form action="">
+		<form ng-submit="buscarArticulos()">
 			<div class="form-group">
-				<label for="name">Autor</label>
-				<input class="form-control" type="text" name="autor" ng-model="autor">
+				<div class="checkbox">
+				  <label><input type="checkbox" ng-model="blnAutor" ng-change="verificar()" id="chkAutor" value="">Autor</label>
+				</div>
+				<input id="txtAutor"  required="true" class="form-control" type="text" name="autor" ng-model="autor">
 			</div>
 			<div class="form-group">
-				<label for="articulo">Articulo</label>
-				<input class="form-control" type="text" name="articulo" ng-model="articulo">
+				<div class="checkbox">
+				  <label><input type="checkbox" ng-model="blnArticulo" ng-change="verificar()" id="chkArticulo" value="">Artículo</label>
+				</div>
+				<input id="txtArticulo" required="true" class="form-control" type="text" name="articulo" ng-model="articulo">
 			</div>
 			<div class="form-group">
-				<label for="anio">Año</label>
-				<input class="form-control" type="numeric" name="anio" ng-model="anio">
+				<div class="checkbox">
+				  <label><input type="checkbox" ng-model="blnAnio" ng-change="verificar()" id="chkAnio" value="">Año</label>
+				</div>
+				<input id="txtAnio" required="true" class="form-control" name="anio" ng-model="anio">
 			</div>
 			<div class="form-group" style="text-align:right;">
-				<a class="btn btn-warning" ng-click="buscarArticulos()" >Buscar</a>
+				<input value="Buscar" type="submit" class="btn btn-warning">
 			</div>			
 		</form>
 		
@@ -55,3 +61,39 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	$(function(){
+		$("#chkAutor").change(function(){
+			if($(this).is(':checked')){
+				$("#txtAutor").prop('disabled',false);
+				$("#txtAutor").prop('required',true);
+			}else{
+				$("#txtAutor").prop('disabled',true);
+				$("#txtAutor").removeAttr('required');
+				$("#txtAutor").val("");
+			}
+		});
+
+		$("#chkArticulo").change(function(){
+			if($(this).is(':checked')){
+				$("#txtArticulo").prop('disabled',false);
+				$("#txtArticulo").prop('required',true);
+			}else{
+				$("#txtArticulo").prop('disabled',true);
+				$("#txtArticulo").removeAttr('required');
+				$("#txtArticulo").val("");
+			}
+		});
+
+		$("#chkAnio").change(function(){
+			if($(this).is(':checked')){
+				$("#txtAnio").prop('disabled',false);
+				$("#txtAnio").prop('required',true);
+			}else{
+				$("#txtAnio").prop('disabled',true);
+				$("#txtAnio").removeAttr('required');
+				$("#txtAnio").val("");
+			}
+		});		
+	})
+</script>
